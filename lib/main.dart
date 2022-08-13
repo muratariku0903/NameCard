@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,55 +15,75 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  // constructor
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Name Card'),
+        ),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
+            const CircleAvatar(
+              radius: 50.0,
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage('../images/face.jpg'),
+            ),
             const Text(
-              'You have pushed the button this many times:',
+              'murata',
+              style: TextStyle(
+                fontFamily: 'NotoSansJP',
+                fontSize: 40.0,
+                // fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'hello world!',
+              style: GoogleFonts.dotGothic16(
+                fontSize: 20,
+              ),
+            ),
+            const Card(
+              margin: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 50,
+              ),
+              child: ListTile(
+                leading: Icon(
+                  Icons.phone,
+                  color: Colors.teal,
+                ),
+                title: Text(
+                  '+81 999 9999',
+                  style: TextStyle(
+                    fontFamily: 'SourceSansPro',
+                    fontSize: 20.0,
+                    color: Colors.teal,
+                  ),
+                ),
+              ),
+            ),
+            const Card(
+              margin: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 50,
+              ),
+              child: ListTile(
+                  leading: Icon(
+                    Icons.mail,
+                    color: Colors.teal,
+                  ),
+                  title: Text(
+                    'clu363721@gmail.com',
+                    style: TextStyle(
+                      fontFamily: 'SourceSansPro',
+                      fontSize: 20.0,
+                      color: Colors.teal,
+                    ),
+                  )),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
